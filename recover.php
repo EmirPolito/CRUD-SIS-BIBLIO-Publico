@@ -18,6 +18,7 @@ if (isset($_SESSION['user_acc_id'])) {
 }
 
 $msg = '';
+$enviado = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verify_csrf($_POST['csrf'] ?? ''))
@@ -44,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->SMTPAuth = true;
 
                 // IMPORTANTE: El usuario debe poner sus credenciales reales aquí
-                $mail->Username = 'tu-correo-electronico';
-                $mail->Password = 'tu-contraseña-de-16-digitos';
+                $mail->Username = '[tu-correo]';
+                $mail->Password = '[tu-password_app]';
 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
@@ -56,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($email);
 
                 // Contenido del Correo
-                $reset_link = "http://localhost/Proyecto-Final-CRUD/CRUD-HOTEL-COPIA/reset.php?t=$token";
+                $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ? "https" : "http";
+                $base_dir = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+                $reset_link = $protocol . "://" . $_SERVER['HTTP_HOST'] . $base_dir . "/reset.php?t=$token";
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Recuperación de Contraseña SIS-BIBLIOTECA';
@@ -66,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $mail->send();
                 $msg = "<div class='alert alert-success'>Hemos enviado un correo de recuperación a $email. (Revisa la bandeja de SPAM)</div>";
-
+                $enviado = true;
             }
             catch (Exception $e) {
                 // En este bloque capturamos cualquier error de envío para que el alumno lo depure
@@ -77,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         else {
             // Confirmación genérica por seguridad
             $msg = "<div class='alert alert-success'>Si el correo existe en nuestra base de datos, recibirás un enlace de recuperación.</div>";
+            $enviado = true;
         }
     }
 }
@@ -96,12 +100,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="login-box">
         <h2 style="text-align:center;">Recuperar Acceso</h2>
         <?php echo $msg; ?>
+        <?php if (!$enviado): ?>
         <form method="POST">
             <input type="hidden" name="csrf" value="<?php echo generate_csrf(); ?>">
             <p style="font-size:14px; color:#666; margin-bottom:15px;">Ingresa tu correo asociado a la plataforma:</p>
             <input type="email" name="email" class="form-control" required>
             <button type="submit" class="btn-submit">Enviar Enlace a Mi Correo</button>
         </form>
+        <?php
+endif; ?>
         <div style="text-align:center; margin-top:20px;">
             <a href="login.php" style="color:#2563eb; text-decoration:none; font-size:14px;">Volver al Login</a>
         </div>

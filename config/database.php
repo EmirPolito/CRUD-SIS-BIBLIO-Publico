@@ -1,21 +1,24 @@
 <?php
 class DBConnection
 {
-    private $host = 'localhost';
-    private $db = 'crud_biblioteca';
-    private $user = 'root';
-    private $pass = 'tu-contraseña-de-tu-mysql';
+    private $host = '[tu-host]';
+    private $db = '[tu-db-name]';
+    private $user = '[tu-user]';
+    private $port = '[tu-port]';
+    private $pass = '[tu-password]';
 
     public function connect()
     {
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->db};charset=utf8mb4";
+            $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->db};charset=utf8mb4";
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::MYSQL_ATTR_SSL_CA => __DIR__ . '/../ca.pem',
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
             ];
-            return new PDO($dsn, $this->user, $this->pass, $options);
+            return new PDO($dsn, $this->user, trim($this->pass), $options);
         }
         catch (PDOException $e) {
             die("Database Error: " . $e->getMessage());

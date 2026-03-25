@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS crud_biblioteca;
-USE crud_biblioteca;
+CREATE DATABASE IF NOT EXISTS crud_biblioteca_original;
+USE crud_biblioteca_original;
 
 
 -- Tablas y registros para usuarios y roles 

@@ -1,3 +1,10 @@
+## 👨‍💻 Autor
+
+**Emir Polito**
+
+- GitHub: https://github.com/EmirPolito
+- Linkedin: https://www.linkedin.com/in/emir-polito-g/
+
 # SIS-BIBLIO (Sistema de Gestión Bibliotecaria)
 
 **SIS-BIBLIO** es una plataforma integral desarrollada para la administración eficiente de una biblioteca y un avanzado **Módulo de Seguridad Web** (Proyecto Final DWP – SDA 3er Parcial). Construido estrictamente con **PHP puro**, HTML5, CSS3, JavaScript nativo (Vanilla) y MySQL (PDO), este sistema enfatiza las mejores prácticas de **Clean Code** y **Principios SOLID**, garantizando una seguridad de grado profesional en cada interacción.
@@ -44,6 +51,7 @@ SIS-BIBLIO/
 ├── modules/                # Componentes del Dashboard y Formularios de CRUD
 ├── PHPMailer/              # Motor para envío transaccional de correos
 ├── base_de_datos.sql       # Script SQL (Incluye usuarios de prueba bcrypted)
+├── ca.pem                  # Certificado SSL para conexión segura a base de datos en la nube
 ├── index.php               # Landing Page publicitaria del sistema
 ├── login.php               # Validación de Acceso
 ├── register.php            # Registro de nuevos lectores
@@ -55,8 +63,9 @@ SIS-BIBLIO/
 
 1. Mueve esta carpeta a tu entorno de desarrollo (`htdocs` de apache, `htdocs` de XAMPP o `www` de WampServer).
 2. **Configuración de la Base de Datos:**
-   - Importa el archivo `base_de_datos.sql` a mysql workbench.
-   - Abre el archivo `config/database.php` y asegúrate de modificar las variables de `$user` y `$password` para que coincidan con las credenciales de tu servidor MySQL local.
+   - Importa el archivo `base_de_datos.sql` a tu gestor de la base de datos local o en la nube.
+   - Abre el archivo `config/database.php` y configura tus variables de conexión (`$host`, `$db`, `$user`, `$port`, `$pass`).
+   - **Conexión Segura (ca.pem):** Si usas una base de datos en la nube con requerimiento SSL (ej. Aiven, AWS), reemplaza el texto en `ca.pem` con tu certificado real. Si usas una base de datos local (como XAMPP/WAMP), deshabilita o comenta las líneas que mencionan `ca.pem` (Líneas 18-19 en `config/database.php`) para evitar errores.
 3. **Configuración de Recuperación de Contraseña (PHPMailer):**
    - Abre el archivo `recover.php` y localiza la configuración SMTP (Aprox. línea 47).
    - En `$mail->Username`, coloca tu correo electrónico de Gmail.
