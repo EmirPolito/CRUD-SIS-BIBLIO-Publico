@@ -1,11 +1,11 @@
 <?php
 class DBConnection
 {
-    private $host = '[tu-host]';
-    private $db = '[tu-db-name]';
-    private $user = '[tu-user]';
-    private $port = '[tu-port]';
-    private $pass = '[tu-password]';
+    private $host = 'tu-host';
+    private $db = 'tu-base-de-datos';
+    private $user = 'tu-usuario';
+    private $port = 'tu-puerto';
+    private $pass = 'tu-contraseña';
 
     public function connect()
     {

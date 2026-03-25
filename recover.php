@@ -45,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->SMTPAuth = true;
 
                 // IMPORTANTE: El usuario debe poner sus credenciales reales aquí
-                $mail->Username = '[tu-correo]';
-                $mail->Password = '[tu-password_app]';
+                $mail->Username = 'tu-correo';
+                $mail->Password = 'tu-contraseña-de-16-digitos';
 
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                   <br><br>Si no solicitaste este cambio, simplemente ignora este mensaje.";
 
                 $mail->send();
-                $msg = "<div class='alert alert-success'>Hemos enviado un correo de recuperación a $email. (Revisa la bandeja de SPAM)</div>";
+                $msg = "<div class='alert alert-success' style='padding:20px; font-size:15px; line-height:1.6;'>Hemos enviado un correo de recuperación a:<br><strong style='font-size:16px; color:#1e40af; display:inline-block; margin:8px 0;'>$email</strong><br><span style='font-size:13px; color:#166534;'>(Revisa la bandeja de SPAM)</span></div>";
                 $enviado = true;
             }
             catch (Exception $e) {
@@ -89,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña | Biblioteca</title>
     <link rel="stylesheet" href="assets/recover.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">

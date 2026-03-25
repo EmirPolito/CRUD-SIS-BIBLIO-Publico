@@ -19,6 +19,7 @@
 - **Contraseñas Hasheadas:** Uso del algoritmo seguro `PASSWORD_BCRYPT`.
 - **Prevención de Inyección SQL y XSS:** Uso estricto de sentencias preparadas (PDO) y sanitización de salidas HTML (`htmlspecialchars`).
 - **Arquitectura de Roles:** Diferenciación estricta entre Administradores (Staff) y Lectores, con ocultación de UI y bloqueos de backend.
+- **Interfaz Moderna y Responsiva:** Diseño reestructurado con modo oscuro elegante para las pantallas de autenticación, totalmente **adaptable a dispositivos móviles (smartphones y tablets)** mediante cuadrículas flexibles, botones táctiles y menú de hamburguesa. Incluye controles interactivos para visualizar/ocultar contraseñas.
 
 ### 2. Panel de Control (Dashboard)
 
@@ -51,7 +52,7 @@ SIS-BIBLIO/
 ├── modules/                # Componentes del Dashboard y Formularios de CRUD
 ├── PHPMailer/              # Motor para envío transaccional de correos
 ├── base_de_datos.sql       # Script SQL (Incluye usuarios de prueba bcrypted)
-├── ca.pem                  # Certificado SSL para conexión segura a base de datos en la nube
+├── ca.pem                  # Certificado SSL para conexiones seguras a DB en la Nube (Aiven/Wasmer)
 ├── index.php               # Landing Page publicitaria del sistema
 ├── login.php               # Validación de Acceso
 ├── register.php            # Registro de nuevos lectores
@@ -63,9 +64,9 @@ SIS-BIBLIO/
 
 1. Mueve esta carpeta a tu entorno de desarrollo (`htdocs` de apache, `htdocs` de XAMPP o `www` de WampServer).
 2. **Configuración de la Base de Datos:**
-   - Importa el archivo `base_de_datos.sql` a tu gestor de la base de datos local o en la nube.
-   - Abre el archivo `config/database.php` y configura tus variables de conexión (`$host`, `$db`, `$user`, `$port`, `$pass`).
-   - **Conexión Segura (ca.pem):** Si usas una base de datos en la nube con requerimiento SSL (ej. Aiven, AWS), reemplaza el texto en `ca.pem` con tu certificado real. Si usas una base de datos local (como XAMPP/WAMP), deshabilita o comenta las líneas que mencionan `ca.pem` (Líneas 18-19 en `config/database.php`) para evitar errores.
+   - Para uso **local**: Importa el archivo `base_de_datos.sql` a MySQL Workbench o phpMyAdmin.
+   - Abre el archivo `config/database.php` y configura las variables de conexión.
+   - **Nota de Despliegue en la Nube:** El sistema ya está optimizado para conectarse a plataformas como Aiven Cloud / Wasmer. Si lo utilizas en un entorno de producción, asegúrate de mantener opciones de SSL activas utilizando el archivo `ca.pem` incluido.
 3. **Configuración de Recuperación de Contraseña (PHPMailer):**
    - Abre el archivo `recover.php` y localiza la configuración SMTP (Aprox. línea 47).
    - En `$mail->Username`, coloca tu correo electrónico de Gmail.
@@ -81,4 +82,4 @@ La base de datos se entrega pre-poblada con 2 cuentas maestras para pruebas de a
 
 ---
 
-_Desarrollado bajo los lineamientos de proyectos limpios, cumpliendo estrictamente con la rúbrica de Seguridad de Aplicaciones Web de DWP - SDA 3er Parcial._
+_Desarrollado bajo los lineamientos de proyectos limpios, cumpliendo estrictamente con la rúbrica de Seguridad de Aplicaciones Web._

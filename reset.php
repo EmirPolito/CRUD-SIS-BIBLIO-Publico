@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nueva Contraseña | Biblioteca</title>
     <link rel="stylesheet" href="assets/reset.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -48,11 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <input type="hidden" name="csrf" value="<?= generate_csrf() ?>">
             <input type="hidden" name="token" value="<?= htmlspecialchars($t) ?>">
-            <input type="password" name="pwd" class="form-control" placeholder="Nueva contraseña secreta" required minlength="5">
+            <div style="position:relative;">
+                <input type="password" name="pwd" id="pwd-reset" class="form-control" placeholder="Nueva contraseña secreta" required minlength="5">
+                <i class="fa fa-eye-slash" id="toggle-pwd-res" style="position:absolute; right:15px; top:15px; cursor:pointer; color:#666;"></i>
+            </div>
             <button type="submit" class="btn-submit">Actualizar y Entrar</button>
         </form>
         <?php endif; ?>
 
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const togglePwd = document.getElementById('toggle-pwd-res');
+        const pwdInput = document.getElementById('pwd-reset');
+        if (togglePwd && pwdInput) {
+            togglePwd.addEventListener('click', function() {
+                const isPassword = pwdInput.getAttribute('type') === 'password';
+                pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
+                this.classList.toggle('fa-eye', isPassword);
+                this.classList.toggle('fa-eye-slash', !isPassword);
+            });
+        }
+    });
+    </script>
 </body>
 </html>

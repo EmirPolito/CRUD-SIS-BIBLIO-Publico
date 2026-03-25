@@ -8,6 +8,7 @@ $pageTitle = "Panel Administrativo";
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $pageTitle ?> | Biblioteca</title>
     <link rel="stylesheet" href="../assets/dashboard/<?= basename($_SERVER['PHP_SELF'], '.php') ?>.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -40,6 +41,7 @@ $pageTitle = "Panel Administrativo";
     <!-- Main Wrapper -->
     <main class="main-content">
         <header class="top-nav">
+            <button class="mobile-toggle-btn" onclick="document.querySelector('.sidebar').classList.toggle('active')"><i class="fa fa-bars"></i></button>
             <h2><?= $pageTitle ?></h2>
             <div class="tools">
                 <span style="color:#888; font-size:14px;"><?= date('d M Y') ?></span>

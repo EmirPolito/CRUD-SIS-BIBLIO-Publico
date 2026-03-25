@@ -52,6 +52,7 @@ $csrf_token = generate_csrf();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro | Biblioteca</title>
     <link rel="stylesheet" href="assets/register.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -70,7 +71,10 @@ endif; ?>
             <input type="hidden" name="csrf" value="<?php echo $csrf_token; ?>">
             <input type="text" name="nombre" class="form-control" placeholder="Nombre Completo" required autofocus>
             <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
-            <input type="password" name="pwd" class="form-control" placeholder="Contraseña secreta" required minlength="5">
+            <div style="position:relative;">
+                <input type="password" name="pwd" id="pwd-register" class="form-control" placeholder="Contraseña secreta" required minlength="5">
+                <i class="fa fa-eye-slash" id="toggle-pwd-reg" style="position:absolute; right:15px; top:15px; cursor:pointer; color:#666;"></i>
+            </div>
             <button type="submit" class="btn-submit">Registrarse y Entrar</button>
         </form>
         <div style="text-align:center; margin-top:20px; font-size:14px;">
@@ -100,6 +104,16 @@ endif; ?>
                 }
                 errorDiv.innerText = "Validación JS Front-end: La contraseña es muy corta (mínimo 5 caracteres).";
             }
+        });
+
+        // Ver y esconder contraseña
+        const togglePwd = document.getElementById('toggle-pwd-reg');
+        const pwdInput = document.getElementById('pwd-register');
+        togglePwd.addEventListener('click', function() {
+            const isPassword = pwdInput.getAttribute('type') === 'password';
+            pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
+            this.classList.toggle('fa-eye', isPassword);
+            this.classList.toggle('fa-eye-slash', !isPassword);
         });
     });
     </script>

@@ -61,6 +61,7 @@ $csrf_token = generate_csrf();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso al Sistema | Biblioteca</title>
     <link rel="stylesheet" href="assets/login.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -78,7 +79,10 @@ endif; ?>
         <form method="POST" action="">
             <input type="hidden" name="csrf" value="<?php echo $csrf_token; ?>">
             <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required autofocus>
-            <input type="password" name="pwd" class="form-control" placeholder="Contraseña" required>
+            <div style="position:relative;">
+                <input type="password" name="pwd" id="pwd-login" class="form-control" placeholder="Contraseña" required>
+                <i class="fa fa-eye-slash" id="toggle-pwd" style="position:absolute; right:15px; top:15px; cursor:pointer; color:#666;"></i>
+            </div>
             <button type="submit" class="btn-submit">Ingresar</button>
         </form>
         <div style="text-align:center; margin-top:20px; font-size:14px;">
@@ -119,6 +123,16 @@ endif; ?>
                 }
                 errorDiv.innerText = "Validación JS: La contraseña debe tener al menos 5 caracteres.";
             }
+        });
+
+        // Ver y esconder contraseña
+        const togglePwd = document.getElementById('toggle-pwd');
+        const pwdInput = document.getElementById('pwd-login');
+        togglePwd.addEventListener('click', function() {
+            const isPassword = pwdInput.getAttribute('type') === 'password';
+            pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
+            this.classList.toggle('fa-eye', isPassword);
+            this.classList.toggle('fa-eye-slash', !isPassword);
         });
     });
     </script>

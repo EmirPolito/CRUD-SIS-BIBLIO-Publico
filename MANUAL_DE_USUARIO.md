@@ -9,19 +9,20 @@ Bienvenido al sistema **SIS-BIBLIO**. Este manual explica paso a paso cómo inte
 ### Inicio de Sesión
 
 - Diríjase a la página principal y haga clic en **"Acceder al Panel"** (o en la esquina superior derecha).
+- **Nuevo Diseño:** Todas las pantallas de validación (Acceso, Registro y Recuperación) operan bajo un diseño de "Modo Oscuro" constante. Puede regresar a la portada usando el botón **"← Volver al Inicio"** en la esquina superior izquierda. Además, los campos de contraseña incluyen un ícono de **ojo interactivo**, el cual le permite revelar la contraseña que ha escrito para cerciorarse de que es correcta.
 - Ingrese su correo electrónico y su contraseña secreta asignada.
 - **Atención de Seguridad:** Si ingresa la contraseña de forma incorrecta 3 veces consecutivas, el sistema bloqueará su acceso temporalmente durante 15 minutos exactos como medida de protección.
 
 ### Registro de Nuevo Lector
 
 - Seleccione **"Nuevo Lector"** en el inicio o en las ventanas de acceso.
-- Complete nombre, correo y contraseña. **Importante:** Todo usuario nuevo que se registre a través de nuestra web será añadido al sistema con el rango de _Lector_ (permisos estándar limitados).
+- Complete nombre, correo y contraseña. **Importante:** Todo usuario nuevo que se registre a través de nuestra web será añadido al sistema con el rango de _Lector_ (permisos estándar limitados). Al igual que en el login, el campo de contraseña cuenta con el ícono del ojo (`fa-eye`) para asegurar la exactitud de su nueva clave maestra.
 
 ### Recuperación de Contraseña
 
 - Si olvidó sus datos de ingreso, presione la opción _"Olvidé mi contraseña"_.
 - Ingrese el correo electrónico con el que está registrado. Si este es correcto, se le enviará un correo (incluso puede llegar al buzón de SPAM) con las directivas de restablecimiento.
-- **Nota:** El enlace temporal para cambiar contraseña expira en exactamente 1 hora, no puede reutilizarse.
+- **Nota:** El enlace temporal enviado a su correo tiene 1 hora de vigencia. Dicho enlace le dirigirá a la ventana segura de "Nueva Contraseña", donde también encontrará un ícono de ojo para auxiliarle en la digitación de su nueva credencial.
 
 ---
 
@@ -32,6 +33,7 @@ Una vez completada la autenticación, ingresará a la de control.
 - Verá su **Nombre Completo e Identificador de Nivel** debajo del logo en el menú lateral izquierdo.
 - El sistema cargará Indicadores Rápidos numéricos (Libros actuales, préstamos en vigencia).
 - **Filtrado por Rol:** Si usted es Lector, el sistema reducirá el menú bloqueándole totalmente la visibilidad de los paneles directivos. Solo podrá ver la suma de préstamos que le corresponden.
+- **Navegación en Móviles (Celulares/Tablets):** La barra lateral se mantendrá oculta para liberar espacio en su pantalla. Puede desplegar el menú tocando el botón de las tres líneas (Menú Hamburguesa ☰) en la esquina superior izquierda.
 
 ---
 
@@ -74,4 +76,4 @@ _(Submenú inferior izquierdo – Exclusivo para Staff con nivel administrativo 
 ### 🛡️ Recomendaciones de Navegación Segura
 
 1. Al terminar de operar su terminal, abra el menú izquierdo y pulse el botón **"Salir"** siempre, en lugar de solo cerrar la pestaña.
-2. Todo enlace en las pantallas de recuperación o registro posee un botón "← Volver al Inicio" en la esquina superior izquierda si decide cancelar la operación.
+2. Todo enlace en las pantallas de seguridad (login, registro, recuperación) posee un botón **"← Volver al Inicio"** (`🏠` ícono de casa) en la esquina superior izquierda. Utilícelo para abortar el proceso actual y regresar de manera segura.
