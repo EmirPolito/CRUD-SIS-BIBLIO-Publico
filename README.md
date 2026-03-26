@@ -36,9 +36,9 @@
 
 ## Tecnologías Utilizadas
 
-- **Backend:** PHP 8+ (Sin Frameworks)
-- **Base de Datos:** MySQL / MariaDB (Driver PDO)
-- **Frontend:** HTML5, CSS3 Nativo, JavaScript Vanilla (Manipulación pura del DOM, sin librerías externas)
+- ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) **Backend:** PHP 8+ (Sin Frameworks)
+- ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white) **Base de Datos:** MySQL / MariaDB (Driver PDO)
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) **Frontend:** HTML5, CSS3 Nativo, JavaScript Vanilla (Manipulación pura del DOM, sin librerías externas)
 - **Librerías de Utilidad:** PHPMailer, FontAwesome (únicamente íconos)
 - **Arquitectura:** Patrón estructural limpio con separación de responsabilidades funcionales (Configuración, Autenticación, Vistas).
 
@@ -71,7 +71,7 @@ SIS-BIBLIO/
    - Abre el archivo `recover.php` y localiza la configuración SMTP (Aprox. línea 47).
    - En `$mail->Username`, coloca tu correo electrónico de Gmail.
    - En `$mail->Password`, no pongas tu clave personal. Debes generar una **Contraseña de Aplicación de 16 dígitos** en la sección de seguridad de tu cuenta Google: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) y pegarla ahí.
-4. Visita en tu navegador: `http://localhost/SIS-BIBLIO/index.php`
+4. Visita en tu navegador: `http://localhost/CRUD-SIS-BIBLIO-Publico/index.php`
 
 ## Casos de Prueba Incluidos
 
@@ -81,5 +81,3 @@ La base de datos se entrega pre-poblada con 2 cuentas maestras para pruebas de a
 - **Lector Estándar:** `lector@ejemplo.com` | Pass: `1234567`
 
 ---
-
-_Desarrollado bajo los lineamientos de proyectos limpios, cumpliendo estrictamente con la rúbrica de Seguridad de Aplicaciones Web._
